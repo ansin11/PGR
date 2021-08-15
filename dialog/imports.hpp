@@ -1,3 +1,2 @@
-import ctrlCheckbox;
-
-import RscShortcutButton;
+import ctrlShortcutButton; import RscShortcutButton;
+import ctrlListNBox; import RscListNBox;
