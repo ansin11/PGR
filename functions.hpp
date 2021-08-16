@@ -4,4 +4,8 @@ class PGR {
 	class Public {
 		class createDialog {};
 	};
+
+	class Internal {
+		class initListNBoxCtrls {};
+	};
 };

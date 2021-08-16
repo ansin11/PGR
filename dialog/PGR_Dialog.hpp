@@ -3,6 +3,7 @@
 class PGR_Dialog {
 	idd = 11111;
 	enableSimulation = true;
+	onLoad = "_this call PGR_fnc_initListNBoxCtrls;";
 	
 	class ControlsBackground {
 		class PGR_DialogTitleBar {
@@ -50,6 +51,8 @@ class PGR_Dialog {
 
 		class PGR_Content: ctrlListNBox {
 			idc = 101;
+			disableOverflow = 1;
+			tooltipPerColumn = 1;
 			x = 0;
 			y = 0.085;
 			w = 1;
