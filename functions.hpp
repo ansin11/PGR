@@ -6,6 +6,7 @@ class PGR {
 	};
 
 	class Internal {
+		class getSidePicture {};
 		class initListNBoxCtrls {};
 	};
 };
