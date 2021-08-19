@@ -27,12 +27,12 @@ class PGR_Dialog {
 			idc = -1;
 			type = CT_STATIC;
 			style = ST_CENTER;
+			shadow = 0;
 			colorBackground[] = {0, 0, 0, 0.6};
 			colorText[] = {1, 1, 1, 1};
 			font = "RobotoCondensed";
 			sizeEx = GUI_TEXT_SIZE_MEDIUM;
 			text = "";
-			shadow = 0;
 			x = 0;
 			y = 0.045;
 			w = 1;

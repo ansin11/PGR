@@ -12,7 +12,11 @@ params ["_parentDisplay"];
 private _filterCtrl = _parentDisplay displayCtrl 100;
 private _contentCtrl = _parentDisplay displayCtrl 101;
 
+private _players = allPlayers select {!(_x isKindOf "VirtualMan_F")}; //The select-statement removes Headless Clients, Virtual Spectators and Virtual Curators.
+
 private _addWeightCol = !isNil "ace_common_fnc_getWeight";
+private _useImperial = systemOfUnits == 2;
+private _sortedWeights = [];
 
 //Add columns (the first one already exists):
 if (_addWeightCol) then {
@@ -33,21 +37,29 @@ _filterCtrl lnbAddRow ["Name", "Group", "Role"];
 
 if (_addWeightCol) then {
 	_filterCtrl lnbSetText [[0, 3], "Weight"];
+	_filterCtrl lnbSetData [[0, 3], "Sort By Value"];
+
+	_sortedWeights = _players apply {parseNumber ([_x, _useImperial] call ace_common_fnc_getWeight)};
+	_sortedWeights sort true;
 };
 
 //Add rows with player information:
 {
 	_contentCtrl lnbAddRow [name _x, groupId group _x, (roleDescription _x splitString "@") # 0]; //splitString to deal with https://github.com/CBATeam/CBA_A3/wiki/Name-Groups-in-Lobby.
+	
 	_contentCtrl lnbSetPicture [[_forEachIndex, 0], getText (configFile >> "CfgRanks" >> str rankId _x >> "texture")];
 	_contentCtrl lnbSetPicture [[_forEachIndex, 1], [side group _x] call PGR_fnc_getSidePicture];
-	_contentCtrl lnbSetPictureColor [[_forEachIndex, 1], [side group _x] call BIS_fnc_sideColor];
+	
+	private _color = [side group _x] call BIS_fnc_sideColor;
+	_contentCtrl lnbSetPictureColor [[_forEachIndex, 1], _color];
+	_contentCtrl lnbSetPictureColorSelected [[_forEachIndex, 1], _color];
 	
 	if (_addWeightCol) then {
-		_contentCtrl lnbSetTextRight [[_forEachIndex, 3], [_x, systemOfUnits == 2] call ace_common_fnc_getWeight]; //lnbSetTextRight is currently broken (the text is not rendered).
-		_contentCtrl lnbSetText [[_forEachIndex, 3], [_x, systemOfUnits == 2] call ace_common_fnc_getWeight]; //Can probably use this for sorting (unless it leads to visual glitches).
-		//_contentCtrl lnbSetColor [[_forEachIndex, 3], [1, 1, 1, 0]];
+		_contentCtrl lnbSetTextRight [[_forEachIndex, 3], [_x, _useImperial] call ace_common_fnc_getWeight]; //lnbSetTextRight is currently broken (the text is not rendered).
+		_contentCtrl lnbSetText [[_forEachIndex, 3], [_x, _useImperial] call ace_common_fnc_getWeight];
+		_contentCtrl lnbSetValue [[_forEachIndex, 3], _sortedWeights find parseNumber ([_x, _useImperial] call ace_common_fnc_getWeight)];
 	};
-} forEach allUnits; //(allPlayers select {!(_x isKindOf "VirtualMan_F")}); //The select-statement removes Headless Clients, Virtual Spectators and Virtual Curators.
+} forEach _players;
 
 [_filterCtrl, _contentCtrl] call BIS_fnc_initListNBoxSorting;
 
