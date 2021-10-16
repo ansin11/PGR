@@ -24,4 +24,8 @@ switch (_side) do {
 	case west: {
 		"\A3\ui_f\data\map\markers\nato\b_unknown.paa"
 	};
+
+	default {
+		""
+	};
 };

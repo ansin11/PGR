@@ -55,8 +55,7 @@ if (_addWeightCol) then {
 	_contentCtrl lnbSetPictureColorSelected [[_forEachIndex, 1], _color];
 	
 	if (_addWeightCol) then {
-		_contentCtrl lnbSetTextRight [[_forEachIndex, 3], [_x, _useImperial] call ace_common_fnc_getWeight]; //lnbSetTextRight is currently broken (the text is not rendered).
-		_contentCtrl lnbSetText [[_forEachIndex, 3], [_x, _useImperial] call ace_common_fnc_getWeight];
+		_contentCtrl lnbSetTextRight [[_forEachIndex, 3], [_x, _useImperial] call ace_common_fnc_getWeight];
 		_contentCtrl lnbSetValue [[_forEachIndex, 3], _sortedWeights find parseNumber ([_x, _useImperial] call ace_common_fnc_getWeight)];
 	};
 } forEach _players;

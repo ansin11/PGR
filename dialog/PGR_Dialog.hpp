@@ -61,7 +61,7 @@ class PGR_Dialog {
 
 		class PGR_DialogButtonClose: ctrlShortcutButton {
 			idc = -1;
-			action = "closeDialog 0;";
+			onButtonClick = "closeDialog 0;";
 			text = "CLOSE";
 			x = 0.875;
 			y = 0.96;
