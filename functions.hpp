@@ -8,5 +8,8 @@ class PGR {
 	class Internal {
 		class getSidePicture {};
 		class initListNBoxCtrls {};
+		class initVariables {
+			preInit = 1;
+		};
 	};
 };

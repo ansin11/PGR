@@ -1,7 +1,7 @@
 #define GUI_BACKGROUND_COLOR {"(profileNamespace getVariable ['GUI_BCG_RGB_R', 0.13])", "(profileNamespace getVariable ['GUI_BCG_RGB_G', 0.54])", "(profileNamespace getVariable ['GUI_BCG_RGB_B', 0.21])", "(profileNamespace getVariable ['GUI_BCG_RGB_A', 0.8])"}
 
 class PGR_Dialog {
-	idd = 11111;
+	idd = -1;
 	enableSimulation = true;
 	onLoad = "_this call PGR_fnc_initListNBoxCtrls;";
 	
