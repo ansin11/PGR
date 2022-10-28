@@ -33,7 +33,7 @@ if (_addWeightCol) then {
 };
 
 //Add column headers:
-_filterCtrl lnbAddRow ["Name", "Group", "Role"];
+_filterCtrl lnbAddRow ["Player", "Group", "Role"];
 
 if (_addWeightCol) then {
 	_filterCtrl lnbSetText [[0, 3], "Weight"];
@@ -55,8 +55,9 @@ if (_addWeightCol) then {
 	_contentCtrl lnbSetPictureColorSelected [[_forEachIndex, 1], _color];
 	
 	if (_addWeightCol) then {
-		_contentCtrl lnbSetTextRight [[_forEachIndex, 3], [_x, _useImperial] call ace_common_fnc_getWeight];
-		_contentCtrl lnbSetValue [[_forEachIndex, 3], _sortedWeights find parseNumber ([_x, _useImperial] call ace_common_fnc_getWeight)];
+		private _weight = [_x, _useImperial] call ace_common_fnc_getWeight;
+		_contentCtrl lnbSetTextRight [[_forEachIndex, 3], _weight];
+		_contentCtrl lnbSetValue [[_forEachIndex, 3], _sortedWeights find parseNumber _weight];
 	};
 } forEach _players;
 
