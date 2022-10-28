@@ -8,4 +8,4 @@ if (!isNull findDisplay 11111) exitWith {
 };
 
 //Create the dialog:
-createDialog "PGR_Dialog";
+createDialog ["PGR_Dialog", true];
