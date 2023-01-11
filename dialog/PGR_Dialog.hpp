@@ -3,19 +3,15 @@
 class PGR_Dialog {
 	idd = -1;
 	enableSimulation = true;
-	onLoad = "_this call PGR_fnc_initListNBoxCtrls;";
 	
 	class ControlsBackground {
-		class PGR_DialogTitleBar {
-			idc = -1;
+		class TitleBar: ctrlStaticTitle {
 			moving = true; //Toggles possibility to drag the dialog across the screen.
-			type = CT_STATIC;
-			style = ST_LEFT;
-			shadow = 0;
 			colorBackground[] = GUI_BACKGROUND_COLOR;
 			colorText[] = {1, 1, 1, 1};
 			font = "PuristaMedium";
 			sizeEx = GUI_TEXT_SIZE_MEDIUM;
+			shadow = 0;
 			text = "Player Groups and Roles";
 			x = 0;
 			y = 0;
@@ -23,16 +19,8 @@ class PGR_Dialog {
 			h = 0.04;
 		};
 		
-		class PGR_DialogBackground {
-			idc = -1;
-			type = CT_STATIC;
-			style = ST_CENTER;
-			shadow = 0;
+		class Background: ctrlStaticBackground {
 			colorBackground[] = {0, 0, 0, 0.6};
-			colorText[] = {1, 1, 1, 1};
-			font = "RobotoCondensed";
-			sizeEx = GUI_TEXT_SIZE_MEDIUM;
-			text = "";
 			x = 0;
 			y = 0.045;
 			w = 1;
@@ -41,7 +29,7 @@ class PGR_Dialog {
 	};
 
 	class Controls {
-		class PGR_Filter: ctrlListNBox {
+		class Filter: ctrlListNBox {
 			idc = 100;
 			x = 0;
 			y = 0.045;
@@ -49,7 +37,7 @@ class PGR_Dialog {
 			h = 0.04;
 		};
 
-		class PGR_Content: ctrlListNBox {
+		class Content: ctrlListNBox {
 			idc = 101;
 			disableOverflow = 1;
 			tooltipPerColumn = 1;
@@ -59,8 +47,7 @@ class PGR_Dialog {
 			h = 0.87;
 		};
 
-		class PGR_DialogButtonClose: ctrlShortcutButton {
-			idc = -1;
+		class CloseButton: ctrlShortcutButton {
 			onButtonClick = "closeDialog 0;";
 			text = "CLOSE";
 			x = 0.875;

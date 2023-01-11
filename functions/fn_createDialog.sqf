@@ -11,3 +11,6 @@ with uiNamespace do {
 	//Create the dialog:
 	PGR_dialogDisplay = createDialog ["PGR_Dialog", true];
 };
+
+//Initialize the dialog:
+[uiNamespace getVariable "PGR_dialogDisplay"] call PGR_fnc_initListNBoxCtrls; //PGR_fnc_initListNBoxCtrls is not available in the uiNamespace.
