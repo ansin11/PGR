@@ -5,12 +5,14 @@ Parameters:
 	_parentDisplay: DISPLAY
 */
 
+#include "..\idcs.hpp"
+
 disableSerialization;
 
 params ["_parentDisplay"];
 
-private _filterCtrl = _parentDisplay displayCtrl 100;
-private _contentCtrl = _parentDisplay displayCtrl 101;
+private _filterCtrl = _parentDisplay displayCtrl PGR_IDC_Filter;
+private _contentCtrl = _parentDisplay displayCtrl PGR_IDC_Content;
 
 private _players = allPlayers select {!(_x isKindOf "VirtualMan_F")}; //The select-statement removes Headless Clients, Virtual Spectators and Virtual Curators.
 

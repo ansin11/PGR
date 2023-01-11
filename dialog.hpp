@@ -1,3 +1,6 @@
+#include "idcs.hpp"
+#include "colors.hpp"
+
 #include "dialog\defines.hpp"
 #include "dialog\imports.hpp"
 

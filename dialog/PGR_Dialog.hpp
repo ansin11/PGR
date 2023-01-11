@@ -1,5 +1,3 @@
-#define GUI_BACKGROUND_COLOR {"(profileNamespace getVariable ['GUI_BCG_RGB_R', 0.13])", "(profileNamespace getVariable ['GUI_BCG_RGB_G', 0.54])", "(profileNamespace getVariable ['GUI_BCG_RGB_B', 0.21])", "(profileNamespace getVariable ['GUI_BCG_RGB_A', 0.8])"}
-
 class PGR_Dialog {
 	idd = -1;
 	enableSimulation = true;
@@ -7,8 +5,8 @@ class PGR_Dialog {
 	class ControlsBackground {
 		class TitleBar: ctrlStaticTitle {
 			moving = true; //Toggles possibility to drag the dialog across the screen.
-			colorBackground[] = GUI_BACKGROUND_COLOR;
-			colorText[] = {1, 1, 1, 1};
+			colorBackground[] = {PGR_COL_HIGHLIGHT};
+			colorText[] = {PGR_COL_TEXT_TITLE};
 			font = "PuristaMedium";
 			sizeEx = GUI_TEXT_SIZE_MEDIUM;
 			shadow = 0;
@@ -20,7 +18,7 @@ class PGR_Dialog {
 		};
 		
 		class Background: ctrlStaticBackground {
-			colorBackground[] = {0, 0, 0, 0.6};
+			colorBackground[] = {PGR_COL_BACKGROUND};
 			x = 0;
 			y = 0.045;
 			w = 1;
@@ -30,7 +28,7 @@ class PGR_Dialog {
 
 	class Controls {
 		class Filter: ctrlListNBox {
-			idc = 100;
+			idc = PGR_IDC_Filter;
 			x = 0;
 			y = 0.045;
 			w = 1;
@@ -38,7 +36,7 @@ class PGR_Dialog {
 		};
 
 		class Content: ctrlListNBox {
-			idc = 101;
+			idc = PGR_IDC_Content;
 			disableOverflow = 1;
 			tooltipPerColumn = 1;
 			x = 0;
